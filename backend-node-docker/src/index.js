@@ -1,4 +1,5 @@
 require('dotenv').config();
+const tareaRoutes = require('./routes/tareaRoutes');
 
 const express = require('express');
 const app = express();
@@ -14,6 +15,8 @@ app.use(express.json());
 app.get('/', (req, res) => {
   res.send("API backend funcionando");
 });
+
+app.use('/api', tareaRoutes);
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
