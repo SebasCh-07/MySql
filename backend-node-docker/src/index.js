@@ -1,13 +1,20 @@
+require('dotenv').config();
+
 const express = require('express');
 const app = express();
 
+const port = process.env.PORT || 3000;
+const jwtSecret = process.env.JWT_SECRET;
+
+console.log("secret password:", jwtSecret);
+console.log("port:", port);
+
 app.use(express.json());
 
-app.get('/', async (req, res) => {
-    res.send("API backend funcionando");
+app.get('/', (req, res) => {
+  res.send("API backend funcionando");
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
 });
