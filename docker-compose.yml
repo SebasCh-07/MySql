@@ -1,4 +1,4 @@
-version: '3.8' 
+
 
 services:
   mysql:
@@ -24,9 +24,8 @@ services:
 
   backend:
     build: ./backend-node-docker
-    restart: always
     ports:
-      - 3000:3000
+      - "3000:3000"
     depends_on:
       - mysql
     environment:
@@ -36,7 +35,7 @@ services:
       - DB_PASSWORD=root
       - DB_NAME=tareas_db
     volumes:
-      - ./:/usr/src/app
+      - ./backend-node-docker/:/usr/src/app
 
 volumes:
   mysql_data:
